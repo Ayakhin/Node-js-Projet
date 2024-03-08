@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db: 
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ./back/mysql_db:/var/lib/mysql
+      - ./back/database:/app
+    working_dir: /app
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+
+  backend:
+    image: node
+    volumes:
+      - ./back:/app
+    ports:
+      - 3008:3008
+    working_dir: /app
+    tty: true
+    depends_on:
+      - db
+
+  frontend:
+    image: node
+    volumes:
+      - ./front:/app
+    ports:
+      - 5173:5173
+    working_dir: /app
+    tty: true

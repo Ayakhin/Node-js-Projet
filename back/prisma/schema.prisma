@@ -1,0 +1,49 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+}
+
+model Sport {
+  id          Int      @id @default(autoincrement())
+  name        String
+  competitions Competition[]
+}
+
+model Competition {
+  id         Int     @id @default(autoincrement())
+  name       String
+  location   String
+  sportId    Int
+  sport      Sport   @relation(fields: [sportId], references: [id])
+  athletes   Athlete[]
+  medalists  Medalist[]
+}
+
+model Athlete {
+  id            Int       @id @default(autoincrement())
+  name          String
+  country       String
+  competitions  Competition[]
+  medalists     Medalist[] 
+}
+
+model Medalist {
+  id           Int         @id @default(autoincrement())
+  medalType    MedalType
+  athleteId    Int
+  competitionId Int
+  athlete      Athlete     @relation(fields: [athleteId], references: [id])
+  competition  Competition @relation(fields: [competitionId], references: [id])
+}
+
+enum MedalType {
+  GOLD
+  SILVER
+  BRONZE
+}
