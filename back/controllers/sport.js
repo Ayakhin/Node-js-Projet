@@ -19,4 +19,11 @@ const deleteSport = async (req, res) => {
   res.json({ success: true });
 };
 
-export { getSport, createSport, deleteSport };
+const putSport = async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  await prisma.sport.update({ where: { id: parseInt(id) }, data: { name }  });
+  res.json({ success: true });
+};
+
+export { getSport, createSport, deleteSport, putSport };

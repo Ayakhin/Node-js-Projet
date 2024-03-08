@@ -19,5 +19,5 @@ Projet « Jeux Olympiques »
    npm start
    ```
 
-4. Ouvrez votre navigateur et accédez à [http://localhost:3000](http://localhost:3000).
+4. Ouvrez votre navigateur et accédez à [http://localhost:5173](http://localhost:5173).
 

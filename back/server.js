@@ -3,6 +3,7 @@ import express, { Router } from 'express';
 import http from 'node:http';
 import config from './config.js';
 import sport_routeur from './routes/sport.js';
+import athlete_routeur from './routes/athlete.js';
 import cors from 'cors';
 
 const app = express();
@@ -23,6 +24,7 @@ routeur.use(cors({
 
 
 routeur.use(sport_routeur)
+routeur.use(athlete_routeur)
 
 const server = http.createServer(app);
 
