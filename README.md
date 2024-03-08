@@ -16,7 +16,7 @@ Projet « Jeux Olympiques »
 
 3. Lancez l'application :
    ```bash
-   npm start
+   npm run dev
    ```
 
 4. Ouvrez votre navigateur et accédez à [http://localhost:5173](http://localhost:5173).
